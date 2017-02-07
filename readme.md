@@ -74,12 +74,12 @@ php artisan make:controller PapersController
 
 ### ブラウザの対応状況
 #### Mac
-- Safari OK
-- Google Chrome OK
-- Firefox OK
+- Safari OK  10.0.3
+- Google Chrome OK 56.0.2924.87 (64-bit)
+- Firefox OK  51.0.1(64ビット)
 
 #### Windows
-- Google Chrome OK
-- Firefox OK
-- Microsoft Edge ドラッグ&ドロップは不可，複数アップロードは可能
-- Internet Explorer ドラッグ&ドロップは不可，複数アップロードは可能
+- Google Chrome OK  56.0.2924.87
+- Firefox OK  51.0.1 (32ビット)
+- Microsoft Edge ドラッグ&ドロップは不可，複数アップロードは可能  38.14393.0.0
+- Internet Explorer ドラッグ&ドロップは不可，複数アップロードは可能  11.576.14393.0
