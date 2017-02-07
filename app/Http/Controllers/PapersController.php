@@ -9,6 +9,12 @@ use App\Http\Controllers\Controller;
 
 class PapersController extends Controller
 {
+  private $_pdfs_dir;
+
+    public function __construct() {
+      $this->_pdfs_dir = storage_path('app') . '/pdfs';
+    }
+
     /**
      * Display a listing of the resource.
      *
@@ -47,52 +53,37 @@ class PapersController extends Controller
           var_dump($filename);
           echo "<br><br>";
         }
+
+        var_dump($this->_pdfs_dir);
+        echo "<br><br>";
+
+        // アップロードされたPDFファイルをストレージフォルダに保存する
+        $this->_pdfsSave($files);
+
         dd($files);
 
     }
 
-    /**
-     * Display the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function show($id)
-    {
-        //
+    private function _pdfsSave($files) {
+      // アップロードファイルをストレージフォルダに保存する
+      $i = 0;  // ファイルのカウンタ
+      foreach ($files as $file) {
+        // 保存ファイル名を生成する
+        $basename = sprintf(
+          '%s%02d_%s.pdf',
+          time(),
+          $i,
+          sha1(uniqid(mt_rand(),true)) // ランダムな文字列
+        );
+        var_dump($basename);
+        echo "<br>";
+        // ファイルを保存する
+        $file->move($this->_pdfs_dir, $basename);
+
+        $i++;
+      }
+      echo "<br><br>";
+      dd($files);
     }
 
-    /**
-     * Show the form for editing the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function edit($id)
-    {
-        //
-    }
-
-    /**
-     * Update the specified resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function update(Request $request, $id)
-    {
-        //
-    }
-
-    /**
-     * Remove the specified resource from storage.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function destroy($id)
-    {
-        //
-    }
 }
