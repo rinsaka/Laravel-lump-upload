@@ -64,9 +64,28 @@ class PapersController extends Controller
 
 
         // アップロードされたPDFファイル「だけ」をストレージフォルダに保存する
-        $this->_pdfsSave($files_success);
+        $files_name = $this->_pdfsSave($files_success);
 
-        dd($files, $files_success, $files_error);
+        // アップロード結果を表示する
+        echo "<h2>アップロード成功</h2>";
+        $i = 0;
+        echo "<ol>";
+        foreach ($files_success as $file) {
+          echo "<li>" . $files_name[$i]['client'] . "  --------->>>>>>   " . $files_name[$i]['storage']. "</li>";
+          $i++;
+        }
+        echo "</ol>";
+
+        echo "<h2>アップロード失敗（PDFファイルではありません）</h2>";
+        $i = 0;
+        echo "<ol>";
+        foreach ($files_error as $file) {
+          echo "<li>" . $file->getClientOriginalName() . "</li>";
+          $i++;
+        }
+        echo "</ol>";
+
+        // dd($files, $files_success, $files_error, $files_name);
 
     }
 
@@ -90,6 +109,7 @@ class PapersController extends Controller
     private function _pdfsSave($files) {
       // アップロードファイルをストレージフォルダに保存する
       $i = 0;  // ファイルのカウンタ
+      $array_names = '';
       foreach ($files as $file) {
         // 保存ファイル名を生成する
         $basename = sprintf(
@@ -100,9 +120,11 @@ class PapersController extends Controller
         );
         // ファイルを保存する
         $file->move($this->_pdfs_dir, $basename);
-
+        // クライアントとストレージでの名前を保存する
+        $array_names[$i] = array('client' => $file->getClientOriginalName(), 'storage' => $basename);
         $i++;
       }
+      return $array_names;   // クライアントとストレージでのファイル名の対応表を返す
     }
 
 }
