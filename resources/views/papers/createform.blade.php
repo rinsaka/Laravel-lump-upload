@@ -7,10 +7,10 @@
 <div class="form-group">
     <label for="pdfs">PDFファイル:</label>
     <div id="btnpdf">
-      ここにPDFファイルをドラッグ＆ドロップしてください<br>
-      ここにPDFファイルをドラッグ＆ドロップしてください<br>
-      ここにPDFファイルをドラッグ＆ドロップしてください<br>
-      ここにPDFファイルをドラッグ＆ドロップしてください<br>
+      ここにPDFファイル（複数可）をドラッグ＆ドロップしてください<br>
+      WindowsのInternet ExplorerとMicrosoft Edgeではドラッグ＆ドロップはできません．<br>
+      クリックして表示されるファイル選択ダイアログからファイルを選択してください<br>
+      <br>
       <input type="file" size="80", id="pdfs" name="pdfs[]" multiple required>
       <div id="property"></div>
     </div>

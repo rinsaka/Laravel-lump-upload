@@ -71,3 +71,15 @@ php artisan make:controller PapersController
 ~~~
 
 ### コントローラで pdf ファイルのアップロードを受け付ける
+
+### ブラウザの対応状況
+#### Mac
+- Safari OK
+- Google Chrome OK
+- Firefox OK
+
+#### Windows
+- Google Chrome OK
+- Firefox OK
+- Microsoft Edge ドラッグ&ドロップは不可，複数アップロードは可能
+- Internet Explorer ドラッグ&ドロップは不可，複数アップロードは可能
