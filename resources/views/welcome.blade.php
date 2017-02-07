@@ -35,6 +35,13 @@
             .quote {
                 font-size: 24px;
             }
+
+            .menu {
+                font-size: 24px;
+                margin-top: 40px;
+                margin-bottom: 10px;
+            }
+
         </style>
     </head>
     <body>
@@ -42,6 +49,8 @@
             <div class="content">
                 <div class="title">Laravel 5</div>
                 <div class="quote">{{ Inspiring::quote() }}</div>
+                <div class="menu"><a href="{{ url('/papers/create') }}">Lump Upload</a></div>
+
             </div>
         </div>
     </body>
