@@ -40,9 +40,15 @@ class PapersController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        // アップロードされたファイルのオリジナルファイル名を順に取得する
+        $files = $request->file('pdfs');
+        foreach($files as $file) {
+          $filename = $file->getClientOriginalName();
+          var_dump($filename);
+          echo "<br><br>";
+        }
+        dd($files);
 
-        dd($request->input('_token'), $request->input('title'), $request->input('pdfs'));
     }
 
     /**

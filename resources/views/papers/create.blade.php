@@ -8,7 +8,7 @@
 
 
 
-<form method="post" action="{{ url('papers') }}">
+<form method="post" action="{{ url('papers') }}" enctype='multipart/form-data'>
   {{ csrf_field() }}
   @include('papers.createform')
 </form>

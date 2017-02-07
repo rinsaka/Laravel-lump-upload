@@ -11,7 +11,7 @@
       ここにPDFファイルをドラッグ＆ドロップしてください<br>
       ここにPDFファイルをドラッグ＆ドロップしてください<br>
       ここにPDFファイルをドラッグ＆ドロップしてください<br>
-      <input type="file" size="80", id="pdfs" name="pdfs">
+      <input type="file" size="80", id="pdfs" name="pdfs[]" multiple required>
     </div>
 </div>
 
