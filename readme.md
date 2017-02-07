@@ -69,3 +69,5 @@ DB_PASSWORD=Secret.2016
 php artisan make:model Paper
 php artisan make:controller PapersController
 ~~~
+
+### コントローラで pdf ファイルのアップロードを受け付ける
