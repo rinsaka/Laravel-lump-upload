@@ -28,7 +28,8 @@ class PapersController extends Controller
     public function create()
     {
         //
-        echo "Papers:create";
+        // echo "Papers:create";
+        return view('papers.create');
     }
 
     /**
