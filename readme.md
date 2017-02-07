@@ -63,3 +63,9 @@ DB_PASSWORD=Secret.2016
 - config/app.php
 
 ### apacheに書き込み権限
+
+### Paper モデルとコントローラー
+~~~
+php artisan make:model Paper
+php artisan make:controller PapersController
+~~~
