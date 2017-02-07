@@ -16,3 +16,4 @@ Route::get('/', function () {
 });
 Route::get('/papers', ['as' => 'papers.index', 'uses' => 'PapersController@index']);
 Route::get('/papers/create', ['as' => 'papers.create', 'uses' => 'PapersController@create']);
+Route::post('/papers', ['as' => 'papers.store', 'uses' => 'PapersController@store']);
