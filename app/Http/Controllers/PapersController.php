@@ -85,6 +85,8 @@ class PapersController extends Controller
         }
         echo "</ol>";
 
+        echo "<h2>アップロードされたフォルダ</h2>";
+        echo "<div>" . $this->_pdfs_dir . "/</div>";
         // dd($files, $files_success, $files_error, $files_name);
 
     }
