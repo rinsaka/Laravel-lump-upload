@@ -50,40 +50,40 @@ class PapersController extends Controller
         $files = $request->file('pdfs');
         foreach($files as $file) {
           $filename = $file->getClientOriginalName();
-          var_dump($filename);
-          echo "<br>";
+          // var_dump($filename);
+          // echo "<br>";
         }
 
-        var_dump($this->_pdfs_dir);
-        echo "<br><br>";
+        // var_dump($this->_pdfs_dir);
+        // echo "<br><br>";
 
         // アップロードされたファイルの種類を確認する
-         $this->_checkMimeType($files);
+        $files_success_error = $this->_checkMimeType($files); // MimeTypeによって，2種類に分ける
+        $files_success = $files_success_error['success'];   // PDFファイルの配列
+        $files_error = $files_success_error['error'];       // その他のファイルの配列
 
-        // アップロードされたPDFファイルをストレージフォルダに保存する
-        $this->_pdfsSave($files);
 
-        dd($files);
+        // アップロードされたPDFファイル「だけ」をストレージフォルダに保存する
+        $this->_pdfsSave($files_success);
+
+        dd($files, $files_success, $files_error);
 
     }
 
     private function _checkMimeType($files) {
       // アップロードされたファイルのMimeTypeを確認する
-      $sucess = 0;
-      $error = 0;
+      $array_success = '';
+      $array_error = '';
       foreach ($files as $file) {
         $mime = $file->getMimeType();
-        var_dump($mime);
-        echo "<br>";
         if ($mime === 'application/pdf') {
-          $sucess++;
+          $array_success[] = $file;
         } else {
-          $error++;
+          $array_error[] = $file;
         }
       }
-      echo "PDFファイル数 : $sucess <br>";
-      echo "エラーファイル数 : $error <br>";
-      echo "<br>";
+      // アップロードファイルをPDFファイルとその他のファイルに分けて返す
+      return array('success' => $array_success, 'error' => $array_error);
 
     }
 
@@ -98,15 +98,11 @@ class PapersController extends Controller
           $i,
           sha1(uniqid(mt_rand(),true)) // ランダムな文字列
         );
-        var_dump($basename);
-        echo "<br>";
         // ファイルを保存する
         $file->move($this->_pdfs_dir, $basename);
 
         $i++;
       }
-      echo "<br><br>";
-      dd($files);
     }
 
 }
