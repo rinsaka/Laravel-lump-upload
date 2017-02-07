@@ -25,3 +25,24 @@ If you discover a security vulnerability within Laravel, please send an e-mail t
 ### License
 
 The Laravel framework is open-sourced software licensed under the [MIT license](http://opensource.org/licenses/MIT)
+
+
+
+# lump-upload 一括アップロード
+
+### プロジェクトの生成
+~~
+php composer.phar create-project --prefer-dist laravel/laravel=5.1 lump-upload
+~~
+
+### Git の登録
+~~
+cd lump-upload
+git init
+git add .
+git commit -m 'Initial commit'
+git remote add origin ssh://git@bitbucket.org/rinsaka/lump-upload.git
+git push -u origin master
+
+~~
+
