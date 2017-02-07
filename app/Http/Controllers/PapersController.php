@@ -61,29 +61,37 @@ class PapersController extends Controller
         $files_success_error = $this->_checkMimeType($files); // MimeTypeによって，2種類に分ける
         $files_success = $files_success_error['success'];   // PDFファイルの配列
         $files_error = $files_success_error['error'];       // その他のファイルの配列
+        $n_success = $files_success_error['n_success'];     // アップロード成功したファイル数
+        $n_error = $files_success_error['n_error'];         // アップロード失敗したファイル数
 
+        // dd(count($files_success), count($files_error), $n_success, $n_error);
 
-        // アップロードされたPDFファイル「だけ」をストレージフォルダに保存する
-        $files_name = $this->_pdfsSave($files_success);
+        if($n_success > 0) {
+          // アップロードされたPDFファイル「だけ」をストレージフォルダに保存する
+          $files_name = $this->_pdfsSave($files_success);
+          // アップロード結果を表示する
+          echo "<h2>アップロード成功</h2>";
+          $i = 0;
+          echo "<ol>";
+          foreach ($files_success as $file) {
+            echo "<li>" . $files_name[$i]['client'] . "  --------->>>>>>   " . $files_name[$i]['storage']. "</li>";
+            $i++;
+          }
+          echo "</ol>";
 
-        // アップロード結果を表示する
-        echo "<h2>アップロード成功</h2>";
-        $i = 0;
-        echo "<ol>";
-        foreach ($files_success as $file) {
-          echo "<li>" . $files_name[$i]['client'] . "  --------->>>>>>   " . $files_name[$i]['storage']. "</li>";
-          $i++;
         }
-        echo "</ol>";
 
-        echo "<h2>アップロード失敗（PDFファイルではありません）</h2>";
-        $i = 0;
-        echo "<ol>";
-        foreach ($files_error as $file) {
-          echo "<li>" . $file->getClientOriginalName() . "</li>";
-          $i++;
+        if($n_error > 0) {
+          echo "<h2>アップロード失敗（PDFファイルではありません）</h2>";
+          $i = 0;
+          echo "<ol>";
+          foreach ($files_error as $file) {
+            echo "<li>" . $file->getClientOriginalName() . "</li>";
+            $i++;
+          }
+          echo "</ol>";
         }
-        echo "</ol>";
+
 
         echo "<h2>アップロードされたフォルダ</h2>";
         echo "<div>" . $this->_pdfs_dir . "/</div>";
@@ -95,16 +103,20 @@ class PapersController extends Controller
       // アップロードされたファイルのMimeTypeを確認する
       $array_success = '';
       $array_error = '';
+      $n_success = 0;
+      $n_error = 0;
       foreach ($files as $file) {
         $mime = $file->getMimeType();
         if ($mime === 'application/pdf') {
           $array_success[] = $file;
+          $n_success++;
         } else {
           $array_error[] = $file;
+          $n_error++;
         }
       }
       // アップロードファイルをPDFファイルとその他のファイルに分けて返す
-      return array('success' => $array_success, 'error' => $array_error);
+      return array('success' => $array_success, 'error' => $array_error, 'n_success' => $n_success, 'n_error' => $n_error);
 
     }
 
