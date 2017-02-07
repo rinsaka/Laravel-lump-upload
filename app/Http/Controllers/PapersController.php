@@ -51,16 +51,39 @@ class PapersController extends Controller
         foreach($files as $file) {
           $filename = $file->getClientOriginalName();
           var_dump($filename);
-          echo "<br><br>";
+          echo "<br>";
         }
 
         var_dump($this->_pdfs_dir);
         echo "<br><br>";
 
+        // アップロードされたファイルの種類を確認する
+         $this->_checkMimeType($files);
+
         // アップロードされたPDFファイルをストレージフォルダに保存する
         $this->_pdfsSave($files);
 
         dd($files);
+
+    }
+
+    private function _checkMimeType($files) {
+      // アップロードされたファイルのMimeTypeを確認する
+      $sucess = 0;
+      $error = 0;
+      foreach ($files as $file) {
+        $mime = $file->getMimeType();
+        var_dump($mime);
+        echo "<br>";
+        if ($mime === 'application/pdf') {
+          $sucess++;
+        } else {
+          $error++;
+        }
+      }
+      echo "PDFファイル数 : $sucess <br>";
+      echo "エラーファイル数 : $error <br>";
+      echo "<br>";
 
     }
 
