@@ -43,5 +43,21 @@ git add .
 git commit -m 'Initial commit'
 git remote add origin ssh://git@bitbucket.org/rinsaka/lump-upload.git
 git push -u origin master
-
 ~~~
+
+### MySQLデータベースの作成
+~~~
+CREATE DATABASE laravel_lump_upload;
+GRANT ALL on laravel_lump_upload.* to laraveluser@localhost identified by 'Secret.2016';
+~~~
+
+### 初期設定
+- .env
+~~~
+DB_HOST=localhost
+DB_DATABASE=laravel_lump_upload
+DB_USERNAME=laraveluser
+DB_PASSWORD=Secret.2016
+~~~
+- .gitignore
+- config/app.php
