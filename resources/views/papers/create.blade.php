@@ -15,3 +15,7 @@
 
 
 @endsection
+
+@section('javascript')
+<script src="{{ asset('/assets/js/get_fileinfo.js') }}"></script>
+@endsection

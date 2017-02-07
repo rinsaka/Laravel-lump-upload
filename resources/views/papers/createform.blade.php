@@ -12,6 +12,7 @@
       ここにPDFファイルをドラッグ＆ドロップしてください<br>
       ここにPDFファイルをドラッグ＆ドロップしてください<br>
       <input type="file" size="80", id="pdfs" name="pdfs[]" multiple required>
+      <div id="property"></div>
     </div>
 </div>
 
