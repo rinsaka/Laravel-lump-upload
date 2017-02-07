@@ -11,14 +11,15 @@ btnpdf.addEventListener("change", function(evt){
 
   for(var i = 0 ; i < num ; i++) {
     str += "[File no." + parseInt(i+1) + "] ";
+    str += "ファイル名：" + file[i].name ;
     // ファイルタイプのチェック
     if(file[i].type == "application/pdf") {
     } else {
-      str += "＊＊＊このファイルはアップロードできません＊＊＊<br>";
+      str += " <<<---- このファイルはアップロードできません!!!!";
       cnt_err++;
     }
+    str += "<br>";
 
-    str += "ファイル名：" + file[i].name + "<br>";
   }
 
   property.innerHTML = str;
