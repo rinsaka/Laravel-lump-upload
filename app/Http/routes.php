@@ -14,3 +14,5 @@
 Route::get('/', function () {
     return view('welcome');
 });
+Route::get('/papers', ['as' => 'papers.index', 'uses' => 'PapersController@index']);
+Route::get('/papers/create', ['as' => 'papers.create', 'uses' => 'PapersController@create']);

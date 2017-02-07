@@ -61,3 +61,5 @@ DB_PASSWORD=Secret.2016
 ~~~
 - .gitignore
 - config/app.php
+
+### apacheに書き込み権限
