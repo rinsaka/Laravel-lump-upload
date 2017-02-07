@@ -5,5 +5,17 @@
 
 
 <div class="form-group">
+    <label for="pdfs">PDFファイル:</label>
+    <div id="btnpdf">
+      ここにPDFファイルをドラッグ＆ドロップしてください<br>
+      ここにPDFファイルをドラッグ＆ドロップしてください<br>
+      ここにPDFファイルをドラッグ＆ドロップしてください<br>
+      ここにPDFファイルをドラッグ＆ドロップしてください<br>
+      <input type="file" size="80", id="pdfs" name="pdfs">
+    </div>
+</div>
+
+
+<div class="form-group">
     <button type="submit" class="btn btn-primary form-control"><span class="glyphicon glyphicon-cloud-upload" ></span> Register New Papers</button>
 </div>

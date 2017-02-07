@@ -42,7 +42,7 @@ class PapersController extends Controller
     {
         //
 
-        dd($request->input('title'));
+        dd($request->input('_token'), $request->input('title'), $request->input('pdfs'));
     }
 
     /**

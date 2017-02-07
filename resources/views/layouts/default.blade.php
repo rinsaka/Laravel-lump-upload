@@ -3,6 +3,8 @@
 <head>
     <meta charset="utf-8">
     <title>@yield('title')</title>
+    <!-- MyStyle -->
+    <link href="{{ asset('/assets/mycss/styles.css') }}" rel="stylesheet">
 </head>
 <body>
 
