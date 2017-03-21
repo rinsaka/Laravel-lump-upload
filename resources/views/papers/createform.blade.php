@@ -18,5 +18,5 @@
 
 
 <div class="form-group">
-    <button type="submit" class="btn btn-primary form-control"><span class="glyphicon glyphicon-cloud-upload" ></span> Register New Papers</button>
+    <button type="submit" class="btn btn-primary form-control" id="btn_upload"><span class="glyphicon glyphicon-cloud-upload" ></span> Register New Papers</button>
 </div>

@@ -4,7 +4,7 @@
 
 @section('content')
 
-<h1>Register New Papers</h1>
+<h1>PDFファイルのアップロード</h1>
 
 
 
